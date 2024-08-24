@@ -36,7 +36,7 @@ export default {
       <div class="list bg-none" >
             <div v-for="(project, index) in store.projects" :key="index" class="item" :class="{ active: currentIndex === index, previous: (currentIndex - 1 + store.projects.length) % store.projects.length === index, next: (currentIndex + 1) % store.projects.length === index }">
               <div class="cont-img">
-              <img :src="project.img" alt="Carosello Immagine"  class=""/>
+              <img :src="project.img" alt="Carosello Immagine"  class="immagini"/>
             </div>
             </div>
       </div>
