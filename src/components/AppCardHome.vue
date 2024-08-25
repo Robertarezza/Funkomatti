@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <div v-for="(item, index) in store.CardHome" :key="index" class="col-md-3 col-xs-6 mb-3">
+    <div v-for="(item, index) in store.CardHome" :key="index" class="col-md-5 col-xs-6 mb-3">
       <div class="card p-3 rounded element-class">
         <i :class="[item.icon, 'animated-icon']" style="font-size: xxx-large"></i>
         <p class="mt-4">{{ item.title }}</p>

@@ -497,6 +497,26 @@ components: {
 
 /* Media query per invertire l'ordine */
 @media (max-width: 768px) {
+    // .row {
+    //     flex-direction: column-reverse; /* Inverti la direzione del flex */
+    // }
+    
+    .wrapper .facebook {
+      background:#1877f2 ;
+      color: #fff;
+    }
+
+    .wrapper .icon svg {
+      fill: #fff;
+    }
+    .wrapper .instagram {
+      background: #e4405f;
+      color: #fff;
+    }
+   
+}
+
+@media (max-width: 425px) {
     .row {
         flex-direction: column-reverse; /* Inverti la direzione del flex */
     }

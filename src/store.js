@@ -31,24 +31,24 @@ export const store = reactive({
         {
             img: "/assets/img/img1-removebg-preview.png",
             title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            text: "innovativa e accattivante"
         },
         {
             img: "/assets/img/img2-removebg-preview.png",
             title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            text: " innovativa e accattivante"
         },
         
         {
             img: "/assets/img/img3-removebg-preview.png",
             title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            text: " innovativa e accattivante"
         },
         
         {
             img: "/assets/img/img4-removebg-preview.png",
             title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            text: " innovativa e accattivante"
         },
         {
             img: "/assets/img/img5-removebg-preview.png",
@@ -58,7 +58,7 @@ export const store = reactive({
         {
             img: "/assets/img/IMG_2679-removebg-preview.png",
             title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            text: " innovativa e accattivante"
         },
      ],
   

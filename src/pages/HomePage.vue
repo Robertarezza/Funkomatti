@@ -80,7 +80,7 @@ export default {
         <h3 style="color: #f15048; font-size: 3.2rem" class="pt-5 text-center fw-bold">
           Le nostre opere
         </h3>
-        <p style="color: #f15048; font-size: 1.2rem" class="text-center mb-3">
+        <p style="color: #f15048; font-size: 1.2rem" class="text-center mb-3" id="project">
           Il risultato del nostro processo di branding aziendale è una linea guida
           completa del marchio che può essere utilizzata per progettare un sito web di
           marketing e altre risorse di progettazione come le illustrazioni del marchio che
@@ -279,7 +279,7 @@ export default {
 
 //carosello
 .content {
-      height: 130vh;
+      height: 100vh;
     }
 
 .carousel {
@@ -296,7 +296,7 @@ export default {
     
     ul{
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
 
       li{
@@ -338,23 +338,26 @@ export default {
     .jumbotron {
         padding: 0;
     }
-}
-
-@media (max-width: 768px) {
-    .row_card {
-        margin-left: 40px;
-    }
-    
-   
-}
-@media (max-width: 768px) {
     .carousel {
         padding-bottom: 15px;
     }
     
     .content {
-      height: 120vh;
+      height: 100vh;
     }
+    .row_card {
+        //margin-left: 40px;
+        justify-content: center
+    }
+    
+}
+
+@media (max-width: 768px) {
+   
+   
+}
+@media (max-width: 768px) {
+    
    
 }
 

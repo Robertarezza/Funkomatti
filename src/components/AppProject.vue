@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-   <div class="carousel" id="project">
+   <div class="carousel mt-5" id="">
       <div class="list bg-none" >
             <div v-for="(project, index) in store.projects" :key="index" class="item" :class="{ active: currentIndex === index, previous: (currentIndex - 1 + store.projects.length) % store.projects.length === index, next: (currentIndex + 1) % store.projects.length === index }">
               <div class="cont-img">
@@ -57,7 +57,8 @@ export default {
         
 </template>
 
-<style lang="scss" scoped >
+
+<style lang="scss" scoped>
 .carousel {
   width: 100%;
   height: 100vh;
@@ -97,8 +98,19 @@ export default {
 .item img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Copre interamente il contenitore */
-  transition: transform 0.3s ease;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Aggiunto filtro per la transizione */
+}
+
+.item.active img {
+  filter: none; /* Nessun filtro quando attivo */
+}
+
+
+
+.item.previous .content,
+.item.next .content {
+  opacity: 0;
 }
 
 .item.active,
@@ -106,31 +118,37 @@ export default {
   opacity: 1;
   transform: scale(1);
   z-index: 2;
+  transition: all 0.5s ease; /* Ridurre il tempo di transizione per un effetto più rapido */
 }
 
-.item.previous
- {
-  left: 45%;
+.item-text {
+  opacity: 0;
+  
+}
+
+.item-text.active {
+  opacity: 1;
+}
+
+.item.previous {
+  left: 58%;
   opacity: 0.8;
   transform: scale(0.5);
   z-index: 1;
 }
 
-// .item-text.previous {
-//   left: 45%;
-//   opacity: 0;
-//   transform: scale(0.5);
-//   z-index: 1;
-// }
-
-.item.next,
-.item-text.next {
-  right: 45%;
+.item.next {
+  right: 58%;
   opacity: 0.5;
   transform: scale(0.5);
   z-index: 1;
 }
 
+.item-text.next,
+.item-text.previous {
+  opacity: 0; /* Nasconde il testo */
+  transition: none; /* Nessuna transizione per mantenere nascosto */
+}
 
 .content {
   text-align: center;
@@ -154,6 +172,9 @@ export default {
   justify-content: center;
   background-color: transparent;
   transform: translateY(-50%);
+  position: relative; /* Aggiunto per il posizionamento */
+  top: -245px; /* Avvicinare le frecce alle immagini */
+  z-index: 10;
 }
 
 .arrows i {
@@ -162,7 +183,7 @@ export default {
   font-size: 2rem;
   color: white;
   border-radius: 50%;
-  margin: 0 10px;
+  margin: 0 5px; /* Ridurre il margine per avvicinare ulteriormente le frecce */
 }
 
 @media (max-width: 768px) {
@@ -187,6 +208,10 @@ export default {
     right: 30%;
     transform: scale(0.4);
   }
+
+  .arrows {
+    top: -130px; /* Modificare il posizionamento per schermi più piccoli */
+  }
 }
 
 @media (max-width: 425px) {
@@ -198,16 +223,26 @@ export default {
 
   .item.previous,
   .item-text.previous {
-    left: 40%;
+    left: 50%;
     transform: scale(0.3);
   }
 
   .item.next,
   .item-text.next {
-    right: 40%;
+    right: 50%;
     transform: scale(0.3);
   }
+
+  .arrows {
+    top: -130px; /* Modificare il posizionamento per schermi più piccoli */
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .text {
+    font-size: 0.8rem;
+  }
 }
-
-
 </style>
