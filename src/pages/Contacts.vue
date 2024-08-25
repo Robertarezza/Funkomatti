@@ -19,8 +19,8 @@ export default {
 
 <template>
 <div class="container">
-  <h1 style="margin-top: 100px; font-size: 4rem; color: #f15048; max-width: min-content;" class="element-text1">Trasforma la tua immaginazione in realtà!</h1>
-  <p class="animated-text" style="color: white; font-size: 1.5rem; margin-top: 20px;">
+  <h1 style="" class="element-text1">Trasforma la tua immaginazione in realtà!</h1>
+  <p class="animated-text" style="">
   Siamo qui per rendere unico il tuo mondo con quadretti 3D dei tuoi personaggi preferiti, stampe realistiche che li portano in vita e la personalizzazione dei tuoi Funko Pop! Hai un'idea? Contattaci e insieme daremo forma ai tuoi sogni!
 </p>
   <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048;">
@@ -33,6 +33,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+h1 {
+  margin-top: 100px; 
+  font-size: 4rem; 
+  color: #f15048;
+   max-width: min-content;
+}
+
+p {
+  color: white; 
+  font-size: 1.5rem; 
+  margin-top: 20px;
+ 
+}
+
+
 //   animazione ingresso scritta principale
 @-webkit-keyframes bounce-in-right {
   0% {
@@ -164,6 +179,24 @@ export default {
     .h1 {
         font-size: 2.5rem; 
         max-width: 100%; /* Imposta un valore percentuale corretto per max-width */
+    }
+
+    p{
+      font-size: 0.8rem;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .h1 {
+        font-size: 1.2rem; 
+        max-width: min-content;
+       // max-width: 100%; /* Imposta un valore percentuale corretto per max-width */
+    }
+
+    p{
+      font-size: 0.8rem;
+      max-width: 100%;
     }
   }
 </style>

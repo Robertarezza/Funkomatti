@@ -214,6 +214,8 @@ export default {
   }
 }
 
+
+
 @media (max-width: 425px) {
   .item,
   .item-text {
@@ -243,6 +245,10 @@ export default {
 
   .text {
     font-size: 0.8rem;
+  }
+
+  .carousel {
+    height: 60vh;
   }
 }
 </style>

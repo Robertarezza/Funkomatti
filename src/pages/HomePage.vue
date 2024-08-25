@@ -347,19 +347,21 @@ export default {
     }
     .row_card {
         //margin-left: 40px;
-        justify-content: center
+        justify-content: center;
+        margin-left: 43px;
     }
     
 }
 
-@media (max-width: 768px) {
-   
+@media (max-width: 425px) {
+  .row_card {
+        //margin-left: 40px;
+        justify-content: center;
+        margin-left: 43px;
+    }
    
 }
-@media (max-width: 768px) {
-    
-   
-}
+
 
 
 

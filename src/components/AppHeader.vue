@@ -58,23 +58,18 @@ export default {
     position: fixed;
     width: 100%;
     z-index: 100;
-    //background-color: white;
-    //box-shadow: 2px 2px 10px #888888;
-   background-color: #054a59;
-    //border-radius: 20px;
+    background-color: #054a59;
     padding: 0 20px;
-   // margin-top: 20px;
 
     .img-container {
         width: 50%;
-        //line-height: 75px;
     }
 
     img {
         max-width: 40%;
         filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
-       
     }
+
     .hamburger-menu {
         display: none;  // Sarà visibile solo sui dispositivi mobili
         flex-direction: column;
@@ -111,10 +106,8 @@ export default {
             margin: 0 10px;
             color: #f15048;
             font-weight: 800;
-            
-           
         }
-        
+
         .router-link-active {
             color: rgb(174, 174, 187);
             font-weight: 600;
@@ -130,16 +123,19 @@ export default {
             flex-direction: column;
             position: absolute;
             top: 80px;
+            left: 0;
             right: 0;
-            background-color: white;
+            background-color: #054a59;
             width: 100%;
             height: calc(100vh - 80px);
             transform: translateY(-100%);
             transition: transform 0.3s ease-in-out;
             justify-content: center;
             align-items: center;
+            text-align: center;
             opacity: 0;
             visibility: hidden;
+            padding: 0;
 
             &.active {
                 transform: translateY(0);
