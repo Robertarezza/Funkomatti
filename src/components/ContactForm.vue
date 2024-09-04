@@ -6,10 +6,13 @@ export default {
       email: "",
       msg: "",
       showModal: false, // Stato per gestire la visibilità del modale
+      loading: false, 
     };
   },
   methods: {
     handleSubmit() {
+      this.loading = true; 
+
       const formData = {
         name: this.nome,
         email: this.email,
@@ -28,6 +31,7 @@ export default {
   .then(data => {
     console.log('Response data:', data);
     if (data.success) {
+      this.loading = false;
       this.showModal = true;
       this.nome ="";
       this.email = "";
@@ -37,6 +41,7 @@ export default {
     }
   })
   .catch(error => {
+    this.loading = false;
     console.error('Errore:', error);
   });
     },
@@ -97,7 +102,7 @@ export default {
           </label>
         </div>
 
-        <button class="Btn" type="submit">
+        <button class="Btn" type="submit" :disabled="loading">
           <svg class="Layer" viewBox="0 0 1095.66 1095.63">
             <path
               class="cls-1"
