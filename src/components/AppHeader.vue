@@ -60,6 +60,7 @@ export default {
     z-index: 100;
     background-color: #054a59;
     padding: 0 20px;
+    font-family: Comic Sans MS;
 
     .img-container {
         width: 50%;
@@ -136,6 +137,7 @@ export default {
             opacity: 0;
             visibility: hidden;
             padding: 0;
+            font-family: Comic Sans MS;
 
             &.active {
                 transform: translateY(0);

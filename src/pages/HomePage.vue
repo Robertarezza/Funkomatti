@@ -105,15 +105,18 @@ export default {
 
 <style lang="scss" scoped>
 
+
 .element-text1 {
        max-width: min-content; 
        font-size: 5rem; 
        color: #f15048;
+       font-family: Comic Sans MS;
     }
 
     .list_home {
         list-style-type: none; 
-        color: #f15048
+        color: #f15048;
+        font-family: Comic Sans MS;
     }
 
     .element-text2 {
@@ -121,6 +124,18 @@ export default {
          padding-right: 30px; 
          font-size: 1.5rem
     }
+
+    .element-text2:hover {
+      color: white;
+    }
+    .element-text3 a:hover {
+      color: white;
+    }
+    .element-text4:hover {
+      color: white;
+    }
+
+
     .element-text4 {
         font-size: 1.5rem
     }
@@ -138,11 +153,13 @@ export default {
       justify-content: start;
       align-items: center;
       padding-left: 0;
+      font-family: Comic Sans MS;
 
       li{
       a{
       text-decoration: none;
-      color: #f15048
+      color: #f15048;
+      font-family: Comic Sans MS;
       }
     }
     }
@@ -280,6 +297,7 @@ export default {
 //carosello
 .content {
       height: 100vh;
+      font-family: Comic Sans MS;
     }
 
 .carousel {

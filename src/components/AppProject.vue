@@ -159,12 +159,14 @@ export default {
   font-size: 2rem;
   color: #f15048;
   margin-bottom: 0.5rem;
+  font-family: Comic Sans MS;
 }
 
 .text {
   font-size: 1.2rem;
   color: #333;
   color: #f15048;
+  font-family: Comic Sans MS;
 }
 
 .arrows {

@@ -38,12 +38,14 @@ h1 {
   font-size: 4rem; 
   color: #f15048;
    max-width: min-content;
+   font-family: Comic Sans MS;
 }
 
 p {
   color: white; 
   font-size: 1.5rem; 
   margin-top: 20px;
+  font-family: Comic Sans MS;
  
 }
 
