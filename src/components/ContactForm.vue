@@ -2,48 +2,43 @@
 export default {
   data() {
     return {
-      nome: '',
-      email: '',
-      msg: '',
-      successModal: false,
+      nome: "",
+      email: "",
+      msg: "",
+      showModal: false, // Stato per gestire la visibilità del modale
     };
   },
   methods: {
-    async handleSubmit() {
-      try {
-        const response = await fetch('formmail.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: new URLSearchParams({
-            name: this.nome,
-            email: this.email,
-            message: this.msg,
-          }),
-        });
-
-        if (response.ok) {
-          this.showSuccessModal();
-        } else {
-          alert('Errore nell\'invio del messaggio.');
-        }
-      } catch (error) {
-        console.error('Errore:', error);
-        alert('Errore nell\'invio del messaggio.');
-      }
-    },
-    showSuccessModal() {
-      const modal = document.getElementById('successModal');
-      modal.style.display = 'block';
-      
-      const closeBtn = document.querySelector('.close');
-      closeBtn.onclick = () => {
-        modal.style.display = 'none';
-        this.nome = '';
-        this.email = '';
-        this.msg = '';
+    handleSubmit() {
+      const formData = {
+        name: this.nome,
+        email: this.email,
+        message: this.msg,
       };
+
+      // Invia i dati del form
+      fetch('https://formsubmit.co/ajax/46dccfabc58b39bc1d25eabe5ae19508', {
+  method: 'POST',
+  headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+  body: JSON.stringify(formData)
+}).then(response => response.json())
+  .then(data => {
+    console.log('Response data:', data);
+    if (data.success) {
+      this.showModal = true;
+      this.nome ="";
+      this.email = "";
+      this.msg =";"
+    } else {
+      console.error('Errore durante l\'invio del form', data);
+    }
+  })
+  .catch(error => {
+    console.error('Errore:', error);
+  });
     },
   },
 };
@@ -52,12 +47,15 @@ export default {
 <template>
   <div class="row mt-5 row_form">
     <div class="col-md-6">
-      <form @submit.prevent="handleSubmit" style="
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-      ">
+      <form
+        @submit.prevent="handleSubmit"
+        style="
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+        "
+      >
         <div class="form-control mt-3">
           <input v-model="nome" type="text" id="name" name="name" required />
           <label for="name">
@@ -98,32 +96,71 @@ export default {
             <span style="transition-delay: 150ms">o</span>
           </label>
         </div>
-       
+
         <button class="Btn" type="submit">
-          <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
+          <svg class="Layer" viewBox="0 0 1095.66 1095.63">
+            <path
+              class="cls-1"
+              d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+            <path
+              class="cls-2"
+              d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+            <path
+              class="cls-3"
+              d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+            <path
+              class="cls-4"
+              d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+            <path
+              class="cls-5"
+              d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+            <path
+              class="cls-6"
+              d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z"
+              transform="translate(-202.29 -201.89)"
+            ></path>
+          </svg>
           <p class="text">Invia</p>
         </button>
       </form>
       <!-- Modale di Successo -->
-      <div id="successModal" class="modal">
+      <div v-if="showModal" id="successModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
+          <span class="close" @click="showModal = false">&times;</span>
           <p>Mail inviata correttamente!</p>
         </div>
       </div>
     </div>
     <!-- Colonna per il testo descrittivo -->
     <div class="col-md-6">
-      <h6 style="max-width: min-content; font-size: 3rem; color: #f15048; margin-top: 20px;">Contattaci</h6>
+      <h6
+        style="max-width: min-content; font-size: 3rem; color: #f15048; margin-top: 20px"
+      >
+        Contattaci
+      </h6>
       <p style="color: #f15048; font-size: 0.9rem" class=" ">
         Utilizza il nostro modulo di contatto per tutte le richieste di informazioni o
         contattaci direttamente utilizzando le informazioni di contatto sottostanti. Non
         esitare a contattarci.
       </p>
-    
+
       <ul class="wrapper">
         <li class="icon facebook">
-          <a href="https://www.facebook.com/mattia.sbravati.1?locale=it_IT" target="_blank" aria-label="Facebook">
+          <a
+            href="https://www.facebook.com/mattia.sbravati.1?locale=it_IT"
+            target="_blank"
+            aria-label="Facebook"
+          >
             <span class="tooltip">Facebook</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -137,9 +174,13 @@ export default {
             </svg>
           </a>
         </li>
-  
+
         <li class="icon instagram">
-          <a href="https://www.instagram.com/funkomatti/" target="_blank" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/funkomatti/"
+            target="_blank"
+            aria-label="Instagram"
+          >
             <span class="tooltip">Instagram</span>
             <svg
               viewBox="0 0 16 16"
@@ -159,12 +200,10 @@ export default {
   </div>
 </template>
 
-
 <style lang="scss" scoped>
-
 //modale
 .modal {
-  display: none;
+  display: block; /* Mostra il modale */
   position: fixed;
   z-index: 1;
   left: 0;
@@ -172,8 +211,8 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -197,7 +236,6 @@ export default {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 //input
 /* From Uiverse.io by liyaxu123 */
@@ -278,7 +316,7 @@ export default {
 }
 
 //bottone
-//* From Uiverse.io by vinodjangid07 */ 
+//* From Uiverse.io by vinodjangid07 */
 .Btn {
   position: relative;
   width: 180px;
@@ -289,69 +327,69 @@ export default {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: 30px;
   cursor: pointer;
   -webkit-box-shadow: 8px 8px 0px rgb(12, 12, 12);
-          box-shadow: 8px 8px 0px rgb(12, 12, 12);
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  box-shadow: 8px 8px 0px rgb(12, 12, 12);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .Layer {
   width: 60px;
   position: absolute;
   left: -30px;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
-  -webkit-animation: spin 5s  linear infinite;
-          animation: spin 5s  linear infinite;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite;
 }
 
 .Btn:hover {
   -webkit-transform: translateY(5px);
-      -ms-transform: translateY(5px);
-          transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  transform: translateY(5px);
   -webkit-box-shadow: 3px 3px 0px black;
-          box-shadow: 3px 3px 0px black;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  box-shadow: 3px 3px 0px black;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 .Btn:hover .Layer {
   left: 0%;
   width: 100%;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .text {
@@ -361,15 +399,16 @@ export default {
   position: absolute;
   margin-top: 5px;
   z-index: 2;
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
-  font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
-.Btn:hover .text{
+.Btn:hover .text {
   color: transparent;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* svg colors */
 .cls-1 {
@@ -397,10 +436,9 @@ export default {
 }
 /* svg colors */
 
-
 //link social
 
-/* From Uiverse.io by escannord */ 
+/* From Uiverse.io by escannord */
 .wrapper {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -508,7 +546,6 @@ export default {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  
 }
 
 .wrapper .icon:hover span,
@@ -517,8 +554,6 @@ export default {
 }
 .wrapper .facebook::after {
   background-color: #1877f2;
-  
- 
 }
 
 .wrapper .instagram::after {
@@ -530,8 +565,6 @@ export default {
   background: #1877f2;
   color: #fff;
 }
-
-
 
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip::before {
@@ -580,42 +613,40 @@ export default {
 
 /* Media query per invertire l'ordine */
 @media (max-width: 768px) {
-    // .row {
-    //     flex-direction: column-reverse; /* Inverti la direzione del flex */
-    // }
-    
-    .wrapper .facebook {
-      background:#1877f2 ;
-      color: #fff;
-    }
+  // .row {
+  //     flex-direction: column-reverse; /* Inverti la direzione del flex */
+  // }
 
-    .wrapper .icon svg {
-      fill: #fff;
-    }
-    .wrapper .instagram {
-      background: #e4405f;
-      color: #fff;
-    }
-   
+  .wrapper .facebook {
+    background: #1877f2;
+    color: #fff;
+  }
+
+  .wrapper .icon svg {
+    fill: #fff;
+  }
+  .wrapper .instagram {
+    background: #e4405f;
+    color: #fff;
+  }
 }
 
 @media (max-width: 425px) {
-    .row {
-        flex-direction: column-reverse; /* Inverti la direzione del flex */
-    }
-    
-    .wrapper .facebook {
-      background:#1877f2 ;
-      color: #fff;
-    }
+  .row {
+    flex-direction: column-reverse; /* Inverti la direzione del flex */
+  }
 
-    .wrapper .icon svg {
-      fill: #fff;
-    }
-    .wrapper .instagram {
-      background: #e4405f;
-      color: #fff;
-    }
-   
+  .wrapper .facebook {
+    background: #1877f2;
+    color: #fff;
+  }
+
+  .wrapper .icon svg {
+    fill: #fff;
+  }
+  .wrapper .instagram {
+    background: #e4405f;
+    color: #fff;
+  }
 }
 </style>

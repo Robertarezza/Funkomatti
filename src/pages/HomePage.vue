@@ -55,9 +55,6 @@ export default {
           <li
             class="me-3 element-text3"
             style="">
-            <!-- <router-link :to="{ name: 'projects' }" class="nav-link p-3"
-              >Progetti</router-link
-            > -->
             <a href="#project">Progetti</a>
           </li>
           <li class="element-text4" style="">
@@ -75,12 +72,12 @@ export default {
         </div>
       </div>
   
-    <div class="content mb-5  pe-0 me-0 ms-0 pe-0 ps-0">
+    <div class="content mb-5  pe-0 me-0 ms-0 pe-0 ps-0" id="project">
       <div class="container  pe-0 me-0 ms-0 pe-0 ps-0">
         <h3 style="color: #f15048; font-size: 3.2rem" class="pt-5 text-center fw-bold">
           Le nostre opere
         </h3>
-        <p style="color: #f15048; font-size: 1.2rem" class="text-center mb-3" id="project">
+        <p style="color: #f15048; font-size: 1.2rem" class="text-center mb-3" >
           Il risultato del nostro processo di branding aziendale è una linea guida
           completa del marchio che può essere utilizzata per progettare un sito web di
           marketing e altre risorse di progettazione come le illustrazioni del marchio che
