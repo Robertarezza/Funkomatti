@@ -4,6 +4,7 @@ import { store } from "../store";
 import AppCardHome from "../components/AppCardHome.vue";
 import AppProject from "../components/AppProject.vue";
 import ContactForm from "../components/ContactForm.vue";
+import Contacts from "./Contacts.vue";
 console.log(store);
 
 export default {
@@ -12,6 +13,7 @@ export default {
     AppCardHome,
     AppProject,
     ContactForm,
+    Contacts
   },
   data() {
     return {
@@ -58,11 +60,10 @@ export default {
             <a href="#project">Progetti</a>
           </li>
           <li class="element-text4" style="">
-            <router-link :to="{ name: 'contacts' }" class="nav-link p-3"
-              >Contattaci</router-link
-            >
+            <a href="#contact">Contattaci</a>
           </li>
         </ul>
+        
       </div>
     </div>
    
@@ -91,10 +92,9 @@ export default {
       </div>
     </div>
 
-    <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048">
-      
-        <!-- Colonna per il modulo -->
-        <ContactForm />
+    <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048" id="contact">
+      <Contacts />
+        
       </div>
   
   </main>
@@ -302,6 +302,10 @@ export default {
   height: 100vh;
   position: relative;
   overflow: hidden;
+}
+
+.row_card {
+  display: flex;
 }
 @media (max-width: 768px) {
     .element-text1 {

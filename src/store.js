@@ -9,59 +9,166 @@ export const store = reactive({
         },
         {
             icon: "fa-brands fa-unity",
-            title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            title: "Stampe realistiche",
+            text: "Rendi 'reale' le tue foto"
         },
         
         {
         icon: "fa-brands fa-unity",
-        title: "Creazioni 3D",
-        text: "Creazioni 3D innovativa e accattivante"
+        title: "Quadretti",
+        text: "Il tuo personaggio preferito o il tuo film in un quadretto 3d"
         },
         
         {
             icon: "fa-brands fa-unity",
-            title: "Creazioni 3D",
-            text: "Creazioni 3D innovativa e accattivante"
+            title: "FUNKO POP",
+            text: "Crea il Funko POP di te stesso o dei tuoi amici"
         },
      ],
 
    
         projects: [
         {
+            id: 1,
             img: "/assets/img/img1-removebg-preview.png",
-            title: "Creazioni 3D",
-            text: "innovativa e accattivante"
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor: '#FFDDC1'
         },
         {
+            id: 2,
             img: "/assets/img/img2-removebg-preview.png",
-            title: "Creazioni 3D",
-            text: " innovativa e accattivante"
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
         },
         
         {
+            id: 3,
             img: "/assets/img/img3-removebg-preview.png",
-            title: "Creazioni 3D",
-            text: " innovativa e accattivante"
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
         },
         
         {
+            id: 4,
             img: "/assets/img/img4-removebg-preview.png",
-            title: "Creazioni 3D",
-            text: " innovativa e accattivante"
+           description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
         },
         {
+            id: 5,
             img: "/assets/img/img5-removebg-preview.png",
-            title: "FUNKO POP",
-            text: "Crea il Funko POP di te stesso o dei tuoi amici"
+            description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
         },
         {
+            id: 6,
             img: "/assets/img/IMG_2679-removebg-preview.png",
-            title: "Creazioni 3D",
-            text: " innovativa e accattivante"
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
         },
+        {
+            id: 7,
+            img: "/src/assets/img/onepice.png",
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
+        },
+        {
+            id: 8,
+            img: "/src/assets/img/marvel1.png",
+            description: "Creazioni 3D, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
+        },
+    ],
+     Creazioni3d: [
+            {
+                id: 1,
+                img: "/assets/img/img1-removebg-preview.png",
+                description: "Creazioni 3D, innovativa e accattivante",
+                backgroundColor: '#FFDDC1'
+            },
+            {
+                id: 2,
+                img: "/assets/img/img2-removebg-preview.png",
+                description: "Creazioni 3D, innovativa e accattivante",
+                backgroundColor:  '#C1E1FF'
+            },
+            
+            {
+                id: 3,
+                img: "/assets/img/img3-removebg-preview.png",
+                description: "Creazioni 3D, innovativa e accattivante",
+                backgroundColor:  '#C1E1FF'
+            },
+            
+            {
+                id: 4,
+                img: "/assets/img/img4-removebg-preview.png",
+               description: "Creazioni 3D, innovativa e accattivante",
+                backgroundColor:  '#C1E1FF'
+            },
+          
+            {
+                id: 5,
+                img: "/assets/img/IMG_2679-removebg-preview.png",
+                description: "Creazioni 3D, innovativa e accattivante",
+                backgroundColor:  '#C1E1FF'
+            },
+            
      ],
+
+     Quadretti: [
+        {
+            id: 1,
+            img: "/assets/img/onepice.png",
+            description: "Quadretti, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
+        },
+        {
+            id: 2,
+            img: "/assets/img/marvel1.png",
+            description: "Quadretti, innovativa e accattivante",
+            backgroundColor:  '#C1E1FF'
+        },
+        
+ ],
+ FunkoPop: [
+    {
+        id: 1,
+            img: "/assets/img/img5-removebg-preview.png",
+            description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
+    },
+    {
+        id: 2,
+        img: "/assets/img/Funko1.png",
+         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
+    },
+    {
+        id: 3,
+        img: "/assets/img/Funko2.png",
+         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
+    },
+    
+],
+
+Stampe: [
+    {
+        id: 1,
+            img: "/assets/img/stampa1.png",
+            description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
+    },
+    {
+        id: 2,
+        img: "/assets/img/Stampa2.png",
+         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            backgroundColor:  '#D1FFC1'
+    },
   
+    
+],
 
     
     

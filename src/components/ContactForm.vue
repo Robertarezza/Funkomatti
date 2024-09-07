@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -6,12 +8,12 @@ export default {
       email: "",
       msg: "",
       showModal: false, // Stato per gestire la visibilità del modale
-      loading: false, 
+      loading: false, // Stato di caricamento
     };
   },
   methods: {
     handleSubmit() {
-      this.loading = true; 
+      this.loading = true; // Imposta lo stato di caricamento a true
 
       const formData = {
         name: this.nome,
@@ -20,30 +22,28 @@ export default {
       };
 
       // Invia i dati del form
-      fetch('https://formsubmit.co/ajax/46dccfabc58b39bc1d25eabe5ae19508', {
-  method: 'POST',
-  headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-  body: JSON.stringify(formData)
-}).then(response => response.json())
-  .then(data => {
-    console.log('Response data:', data);
-    if (data.success) {
-      this.loading = false;
-      this.showModal = true;
-      this.nome ="";
-      this.email = "";
-      this.msg =";"
-    } else {
-      console.error('Errore durante l\'invio del form', data);
-    }
-  })
-  .catch(error => {
-    this.loading = false;
-    console.error('Errore:', error);
-  });
+      axios.post('https://formsubmit.co/ajax/46dccfabc58b39bc1d25eabe5ae19508', formData, {
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        this.loading = false; // Imposta lo stato di caricamento a false
+        console.log('Response data:', response.data);
+        if (response.data.success) {
+          this.showModal = true; // Mostra il modale
+          this.nome = ""; // Pulisce il campo nome
+          this.email = ""; // Pulisce il campo email
+          this.msg = ""; // Pulisce il campo messaggio
+        } else {
+          console.error('Errore durante l\'invio del form', response.data);
+        }
+      })
+      .catch(error => {
+        this.loading = false; // Imposta lo stato di caricamento a false
+        console.error('Errore:', error);
+      });
     },
   },
 };
@@ -103,7 +103,9 @@ export default {
         </div>
 
         <button class="Btn" type="submit" :disabled="loading">
-          <svg class="Layer" viewBox="0 0 1095.66 1095.63">
+
+          <span v-if="loading" class="loading-spinner"></span>
+          <svg v-else class="Layer" viewBox="0 0 1095.66 1095.63">
             <path
               class="cls-1"
               d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z"
@@ -135,7 +137,7 @@ export default {
               transform="translate(-202.29 -201.89)"
             ></path>
           </svg>
-          <p class="text">Invia</p>
+          <p  class="text">Invia</p>
         </button>
       </form>
       <!-- Modale di Successo -->
@@ -206,6 +208,23 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+/* Stile per l'indicatore di caricamento */
+.loading-spinner {
+  border: 4px solid #f3f3f3; /* Colore di sfondo */
+  border-radius: 50%;
+  border-top: 4px solid #3498db; /* Colore della parte animata */
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animazione per l'indicatore di caricamento */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 //modale
 .modal {
   display: block; /* Mostra il modale */

@@ -43,7 +43,7 @@ export default {
         <div class="list-text bg-none" >
                <div v-for="(project, index) in store.projects" :key="index" class="item" :class="{ active: currentIndex === index, previous: (currentIndex - 1 + store.projects.length) % store.projects.length === index, next: (currentIndex + 1) % store.projects.length === index }">
                 <div class="content ">
-                  <h2 class="title">{{ project.title }}</h2>
+                  <h2 class="title">{{ project.description }}</h2>
                   <p class="text">{{ project.text }}</p>
               </div>
             </div>
@@ -82,6 +82,7 @@ export default {
   position: absolute;
   width: 500px;
   height: 100%;
+  
   transition: all 3s cubic-bezier(0, 0, 0.2, 1);
   overflow: hidden;
   opacity: 0;
@@ -116,9 +117,11 @@ export default {
 .item.active,
 .item-text.active {
   opacity: 1;
-  transform: scale(1);
-  z-index: 2;
-  transition: all 0.5s ease; /* Ridurre il tempo di transizione per un effetto più rapido */
+    transform: scale(1);
+    z-index: 2;
+    /* transition: all 0.5s ease; */
+    transition-duration: 2s;
+    transform-origin: right;
 }
 
 .item-text {

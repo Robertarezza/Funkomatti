@@ -3,9 +3,9 @@ export default {
     data() {
         return {
             menu: [
-                { title: "HOME", routeName: "home" },
-                { title: "CONTACTS", routeName: "contacts" },
-                { title: "ABOUT", routeName: "about" },
+                { title: "HOME", id: "home" },
+                { title: "CONTATTI", id: "contacts" },
+                { title: "PROGETTI", id: "projects" },
             ],
             isMenuOpen: false, // Stato per il controllo del menu
         }
@@ -37,9 +37,9 @@ export default {
 
         <!-- MENU LIST ITEM -->
         <ul class="menu-list align-items-center" :class="{ 'active': isMenuOpen }">
-            <li v-for="item in menu" :key="item.routeName">
+            <li v-for="item in menu" :key="item.id">
                 <router-link 
-                    :to="{ name: item.routeName }" 
+                    :to="{ name: item.id }" 
                     class="nav-link p-3" 
                     @click.native="closeMenu">
                     {{ item.title }}
@@ -58,9 +58,11 @@ export default {
     position: fixed;
     width: 100%;
     z-index: 100;
-    background-color: #054a59;
+    /* background-color: #054a59; */
     padding: 0 20px;
     font-family: Comic Sans MS;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 30px rgba(227, 228, 237, 0.37);
 
     .img-container {
         width: 50%;
