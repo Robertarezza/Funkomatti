@@ -37,14 +37,18 @@ export default {
 
         <!-- MENU LIST ITEM -->
         <ul class="menu-list align-items-center" :class="{ 'active': isMenuOpen }">
-            <li v-for="item in menu" :key="item.id">
-                <router-link 
-                    :to="{ name: item.id }" 
-                    class="nav-link p-3" 
-                    @click.native="closeMenu">
-                    {{ item.title }}
-                </router-link>
-            </li>
+         
+            <li class="me-3 element-text2">
+          <a href="#home"  @click.native="closeMenu" >Home</a>
+          </li>
+          <li
+            class="me-3 element-text3"
+            style="">
+            <a href="#project" @click.native="closeMenu" >Progetti</a>
+          </li>
+          <li class="element-text4" style="">
+            <a href="#contacts"  @click.native="closeMenu">Contattaci</a>
+          </li>
         </ul>
     </section>
 </template>
@@ -109,11 +113,16 @@ export default {
             margin: 0 10px;
             color: #f15048;
             font-weight: 800;
+            text-decoration: none;
         }
 
-        .router-link-active {
-            color: rgb(174, 174, 187);
+        a {
+            color: #f15048;
             font-weight: 600;
+
+           a :active {
+                color: aliceblue;
+            }
         }
     }
 
@@ -157,4 +166,48 @@ export default {
         }
     }
 }
+
+.element-text1 {
+       max-width: min-content; 
+       font-size: 5rem; 
+       color: #f15048;
+       font-family: Comic Sans MS;
+    }
+
+    .list_home {
+        list-style-type: none; 
+        color: #f15048;
+        font-family: Comic Sans MS;
+    }
+
+    .element-text2 {
+       // border-right: 4px solid white;
+         padding-right: 30px; 
+         font-size: 1.5rem
+    }
+
+    .element-text2:hover {
+      color: white;
+    }
+    .element-text3 a:hover {
+      color: white;
+    }
+    .element-text4:hover {
+      color: white;
+    }
+
+
+    .element-text4 {
+        font-size: 1.5rem
+    }
+
+    .element-text3 {
+       // border-right: 4px solid white; 
+        padding-right: 30px; 
+        font-size: 1.5rem
+    }
+
+    a {
+        text-decoration: none;
+    }
 </style>

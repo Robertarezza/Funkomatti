@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <main class="container mt-5">
+  <main class="container mt-5" id="home">
     <div class="jumbotron  border-0 bg-none">
       <div class="container py-5">
         <h1
@@ -92,7 +92,7 @@ export default {
       </div>
     </div>
 
-    <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048" id="contact">
+    <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048" id="contacts">
       <Contacts />
         
       </div>
