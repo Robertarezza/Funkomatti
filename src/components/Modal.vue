@@ -253,7 +253,12 @@ export default {
   white-space: normal; /* Gestione automatica dei ritorni a capo */
   font-family: Comic Sans MS;
     }
-
+    .item img {
+  width: 100%;
+  height: 75%;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Aggiunto filtro per la transizione */
+}
     
   }
 </style>

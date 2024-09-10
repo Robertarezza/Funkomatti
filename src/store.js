@@ -83,34 +83,39 @@ export const store = reactive({
             {
                 id: 1,
                 img: "/assets/img/img1-removebg-preview.png",
-                description: "Creazioni 3D, innovativa e accattivante",
+                description: "Creazioni 3D",
+                description1:"innovativa e accattivante",
                 backgroundColor: '#FFDDC1'
             },
             {
                 id: 2,
                 img: "/assets/img/img2-removebg-preview.png",
-                description: "Creazioni 3D, innovativa e accattivante",
+                description: "Creazioni 3D",
+                description1:"innovativa e accattivante",
                 backgroundColor:  '#C1E1FF'
             },
             
             {
                 id: 3,
                 img: "/assets/img/img3-removebg-preview.png",
-                description: "Creazioni 3D, innovativa e accattivante",
+                description: "Creazioni 3D",
+                description1:"innovativa e accattivante",
                 backgroundColor:  '#C1E1FF'
             },
             
             {
                 id: 4,
                 img: "/assets/img/img4-removebg-preview.png",
-               description: "Creazioni 3D, innovativa e accattivante",
+                description: "Creazioni 3D",
+                description1:"innovativa e accattivante",
                 backgroundColor:  '#C1E1FF'
             },
           
             {
                 id: 5,
                 img: "/assets/img/IMG_2679-removebg-preview.png",
-                description: "Creazioni 3D, innovativa e accattivante",
+                description: "Creazioni 3D",
+                description1:"innovativa e accattivante",
                 backgroundColor:  '#C1E1FF'
             },
             

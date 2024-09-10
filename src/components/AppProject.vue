@@ -241,7 +241,7 @@ export default {
   }
 
   .arrows {
-    top: -109px; /* Modificare il posizionamento per schermi più piccoli */
+    top: -73px; /* Modificare il posizionamento per schermi più piccoli */
   }
 
   .title {
@@ -253,7 +253,7 @@ export default {
   }
 
   .carousel {
-    height: 60vh;
+    height: 50vh;
   }
 }
 </style>
