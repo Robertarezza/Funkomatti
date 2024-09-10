@@ -68,13 +68,13 @@ export const store = reactive({
         },
         {
             id: 7,
-            img: "/src/assets/img/onepice.png",
+            img: "/assets/img/onepice.png",
             description: "Creazioni 3D, innovativa e accattivante",
             backgroundColor:  '#C1E1FF'
         },
         {
             id: 8,
-            img: "/src/assets/img/marvel1.png",
+            img: "/assets/img/marvel1.png",
             description: "Creazioni 3D, innovativa e accattivante",
             backgroundColor:  '#C1E1FF'
         },
