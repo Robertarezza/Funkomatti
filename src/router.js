@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "./pages/HomePage.vue";
-import About from './pages/About.vue';
+
 import Contacts from './pages/Contacts.vue';
-import Projects from "./pages/Projects.vue";
+
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -19,16 +19,8 @@ const router = createRouter({
             name: "contacts",
             component: Contacts,
         },
-        {
-            path: "/about",
-            name: "about",
-            component: About,
-        },
-        {
-            path: "/project",
-            name: "projects",
-            component: Projects,
-        },
+      
+      
         {
             path: "/not-found",
             name: "notfound",
