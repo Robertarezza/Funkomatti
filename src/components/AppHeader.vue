@@ -1,24 +1,56 @@
 <script>
 export default {
-    data() {
-        return {
-            menu: [
-                { title: "HOME", id: "home" },
-                { title: "CONTATTI", id: "contacts" },
-                { title: "PROGETTI", id: "projects" },
-            ],
-            isMenuOpen: false, // Stato per il controllo del menu
-        }
+  data() {
+    return {
+      isMenuOpen: false,  // Per aprire/chiudere il menu
+      activeLink: 'home', // Per tracciare il link attivo
+      sectionIds: ['home', 'project', 'contacts'], // Id delle sezioni da osservare
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll); // Aggiungi evento scroll
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll); // Rimuovi evento scroll
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
     },
-    methods: {
-        toggleMenu() {
-            this.isMenuOpen = !this.isMenuOpen;
-        },
-        closeMenu() {
-            this.isMenuOpen = false;
-        }
+    
+    closeMenu(link) {
+      this.activeLink = link; // Aggiorna il link attivo quando viene cliccato
+      this.isMenuOpen = false;
     },
-}
+    
+    scrollToSection(sectionId) {
+      const targetElement = document.getElementById(sectionId);
+      if (targetElement) {
+        // Animazione manuale dello scroll
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: 'smooth' // Scroll animato
+        });
+      }
+    },
+    
+    onScroll() {
+      const sections = this.sectionIds.map(id => document.getElementById(id)); // Sezioni da osservare
+      const windowScrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        // Se la sezione è visibile a metà nello schermo
+        if (windowScrollY >= sectionTop - windowHeight / 2 && windowScrollY < sectionTop + sectionHeight) {
+          this.activeLink = section.id; // Aggiorna il link attivo
+        }
+      });
+    },
+  },
+};
 </script>
 
 <template>
@@ -37,23 +69,38 @@ export default {
 
         <!-- MENU LIST ITEM -->
         <ul class="menu-list align-items-center" :class="{ 'active': isMenuOpen }">
-         
-            <li class="me-3 element-text2">
-          <a href="#home"  @click.native="closeMenu" >Home</a>
+          <li class="me-3 element-text2">
+            <a href="#home" 
+               :class="{ active: activeLink === 'home' }" 
+               @click.native="closeMenu('home')">Home</a>
           </li>
-          <li
-            class="me-3 element-text3"
-            style="">
-            <a href="#project" @click.native="closeMenu" >Progetti</a>
+          <li class="me-3 element-text3">
+            <a href="#project" 
+               :class="{ active: activeLink === 'project' }" 
+               @click.native="closeMenu('project')">Progetti</a>
           </li>
-          <li class="element-text4" style="">
-            <a href="#contacts"  @click.native="closeMenu">Contattaci</a>
+          <li class="element-text4">
+            <a href="#contacts" 
+               :class="{ active: activeLink === 'contacts' }" 
+               @click.native="closeMenu('contacts')">Contattaci</a>
           </li>
         </ul>
+  
     </section>
 </template>
 
 <style lang="scss" scoped>
+
+.menu-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-list a.active {
+  text-decoration: underline;
+  color: aliceblue;
+}
+
 .header-menu {
     display: flex;
     justify-content: space-between;
@@ -119,11 +166,14 @@ export default {
         a {
             color: #f15048;
             font-weight: 600;
-
-           a :active {
+        }
+          a:active,
+          a:focus {
+            text-decoration: underline;
                 color: aliceblue;
             }
-        }
+            
+       
     }
 
     @media (max-width: 765px) {
@@ -139,7 +189,7 @@ export default {
             right: 0;
             background-color: #054a59;
             width: 100%;
-            height: calc(100vh - 80px);
+            height: calc(100vh - 458px);
             transform: translateY(-100%);
             transition: transform 0.3s ease-in-out;
             justify-content: center;
@@ -149,6 +199,7 @@ export default {
             visibility: hidden;
             padding: 0;
             font-family: Comic Sans MS;
+            align-content: center;
 
             &.active {
                 transform: translateY(0);
@@ -158,12 +209,34 @@ export default {
 
             li {
                 margin: 20px 0;
+                text-align: center;
+                
+               
             }
+     
         }
 
         .img-container {
             width: 50%;
         }
+        .element-text2 {
+       // border-right: 4px solid white; 
+        padding-right: 0px; 
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .element-text3 {
+       // border-right: 4px solid white; 
+        padding-right: 0px; 
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .element-text4 {
+       // border-right: 4px solid white; 
+        padding-right: 0px; 
+        font-size: 1.5rem;
+        margin: 0;
+    }
     }
 }
 

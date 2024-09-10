@@ -135,19 +135,22 @@ export const store = reactive({
     {
         id: 1,
             img: "/assets/img/img5-removebg-preview.png",
-            description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            description: "FUNKO POP..",
+         description1:"Crea il Funko POP di te stesso o dei tuoi amici",
             backgroundColor:  '#D1FFC1'
     },
     {
         id: 2,
         img: "/assets/img/Funko1.png",
-         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+         description: "FUNKO POP..",
+         description1:"Crea il Funko POP di te stesso o dei tuoi amici",
             backgroundColor:  '#D1FFC1'
     },
     {
         id: 3,
         img: "/assets/img/Funko2.png",
-         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+         description: "FUNKO POP",
+         description1:"Crea il Funko POP di te stesso o dei tuoi amici",
             backgroundColor:  '#D1FFC1'
     },
     
@@ -157,16 +160,33 @@ Stampe: [
     {
         id: 1,
             img: "/assets/img/stampa1.png",
-            description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+            description: "Rendi 'reale' le tue foto",
             backgroundColor:  '#D1FFC1'
     },
     {
         id: 2,
         img: "/assets/img/Stampa2.png",
-         description: "FUNKO POP..Crea il Funko POP di te stesso o dei tuoi amici",
+         description: "Rendi 'reale' le tue foto",
             backgroundColor:  '#D1FFC1'
     },
-  
+    {
+        id: 1,
+            img: "/assets/img/stampa1.png",
+            description: "Rendi 'reale' le tue foto",
+            backgroundColor:  '#D1FFC1'
+    },
+    {
+        id: 3,
+        img: "/assets/img/Stampa3.png",
+         description: "Rendi 'reale' le tue foto",
+            backgroundColor:  '#D1FFC1'
+    },
+    {
+        id: 4,
+        img: "/assets/img/Stampa4.png",
+         description: "Rendi 'reale' le tue foto",
+            backgroundColor:  '#D1FFC1'
+    },
     
 ],
 

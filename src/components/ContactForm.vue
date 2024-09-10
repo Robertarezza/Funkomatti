@@ -151,11 +151,11 @@ export default {
     <!-- Colonna per il testo descrittivo -->
     <div class="col-md-6">
       <h6
-        style="max-width: min-content; font-size: 3rem; color: #f15048; margin-top: 20px"
+        style="max-width: min-content; font-size: 3rem; color: #f15048; margin-top: 20px; font-family: Comic Sans MS;"
       >
         Contattaci
       </h6>
-      <p style="color: #f15048; font-size: 0.9rem" class=" ">
+      <p style="color: white; font-size: 0.9rem; font-family: Comic Sans MS;" class=" ">
         Utilizza il nostro modulo di contatto per tutte le richieste di informazioni o
         contattaci direttamente utilizzando le informazioni di contatto sottostanti. Non
         esitare a contattarci.
@@ -653,11 +653,14 @@ export default {
     background: #e4405f;
     color: #fff;
   }
+
+  
 }
 
 @media (max-width: 425px) {
   .row {
     flex-direction: column-reverse; /* Inverti la direzione del flex */
+    margin-top: -53px !important;
   }
 
   .wrapper .facebook {

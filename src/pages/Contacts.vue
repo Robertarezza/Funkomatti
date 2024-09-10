@@ -178,9 +178,10 @@ p {
   }
 }
 @media (max-width: 768px) {
-    .h1 {
+    h1 {
         font-size: 2.5rem; 
         max-width: 100%; /* Imposta un valore percentuale corretto per max-width */
+        margin-top: 50px; 
     }
 
     p{
@@ -190,10 +191,10 @@ p {
   }
 
   @media (max-width: 425px) {
-    .h1 {
-        font-size: 1.2rem; 
+    h1 {
+        font-size: 2.2rem; 
         max-width: min-content;
-       // max-width: 100%; /* Imposta un valore percentuale corretto per max-width */
+        margin-top: 50px; 
     }
 
     p{

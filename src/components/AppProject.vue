@@ -241,7 +241,7 @@ export default {
   }
 
   .arrows {
-    top: -130px; /* Modificare il posizionamento per schermi più piccoli */
+    top: -109px; /* Modificare il posizionamento per schermi più piccoli */
   }
 
   .title {

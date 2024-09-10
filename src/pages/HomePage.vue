@@ -19,10 +19,21 @@ export default {
     return {
       store,
       currentIndex: 0,
+      sectionIds: ['home', 'project', 'contacts'], // Id delle sezioni da osservare
+      activeLink: '', // Per tracciare il link attivo
     };
   },
-  computed: {},
+
+  mounted() {
+    
+
+
+  },
   methods: {
+    closeMenu(link) {
+      this.activeLink = link; // Aggiorna il link attivo quando viene cliccato
+      this.isMenuOpen = false;
+    },
     nextImage() {
       if (this.store.projects.length) {
         this.currentIndex = (this.currentIndex + 1) % this.store.projects.length;
@@ -36,12 +47,13 @@ export default {
       }
     },
   },
+ 
 };
 </script>
 
 <template>
-  <main class="container mt-5" id="home">
-    <div class="jumbotron  border-0 bg-none">
+  <main class="container mt-5" >
+    <div class="jumbotron  border-0 bg-none sectionIds" id="home"  :class="{ activeLink: activeLink === 'home' }" >
       <div class="container py-5">
         <h1
           class="display-5 fw-bold element-text1"
@@ -49,18 +61,18 @@ export default {
           Creazioni 3D: la soluzione per la visualizzazione realistica
         </h1>
         <ul class="d-flex g-3 mt-5 list_home" style="">
-          <li class="me-3 element-text2"
+          <li
+            class="me-3 element-text2 hover"
             style="">
-            <router-link :to="{ name: 'about' }" class="nav-link p-3"
-              >Chi siamo</router-link>
+            <a href="#home">Home</a>
           </li>
           <li
-            class="me-3 element-text3"
+            class="me-3 element-text3 hover"
             style="">
             <a href="#project">Progetti</a>
           </li>
-          <li class="element-text4" style="">
-            <a href="#contact">Contattaci</a>
+          <li class="element-text4 hover"  style="">
+            <a href="#contacts">Contattaci</a>
           </li>
         </ul>
         
@@ -73,7 +85,7 @@ export default {
         </div>
       </div>
   
-    <div class="content mb-5  pe-0 me-0 ms-0 pe-0 ps-0" id="project">
+    <div class="content mb-5  pe-0 me-0 ms-0 pe-0 ps-0 sectionIds" id="project"  :class="{ activeLink: activeLink === 'home' }" >
       <div class="container  pe-0 me-0 ms-0 pe-0 ps-0">
         <h3 style="color: #f15048; font-size: 3.2rem" class="pt-5 text-center fw-bold">
           Le nostre opere
@@ -92,7 +104,7 @@ export default {
       </div>
     </div>
 
-    <div class="container mt-5 mb-5" style="border-top: 4px solid #f15048" id="contacts">
+    <div class="container mt-5 mb-5 sectionIds" style="border-top: 4px solid #f15048" id="contacts"  :class="{ activeLink: activeLink === 'home' }" >
       <Contacts />
         
       </div>
@@ -101,7 +113,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.activeLink {
+  color: #f15048; /* Colore del link attivo */
+  text-decoration: underline; /* Sottolinea il link attivo */
+  font-weight: bold; /* Puoi anche aggiungere un font bold per differenziare */
+}
 
 .element-text1 {
        max-width: min-content; 
@@ -122,16 +138,17 @@ export default {
          font-size: 1.5rem
     }
 
-    .element-text2:hover {
-      color: white;
+     .element-text2 a:hover {
+     color: white;
     }
     .element-text3 a:hover {
       color: white;
-    }
-    .element-text4:hover {
-      color: white;
-    }
+     }
+     .element-text4 a:hover {
+       color: white;
+     }
 
+   
 
     .element-text4 {
         font-size: 1.5rem
@@ -304,9 +321,7 @@ export default {
   overflow: hidden;
 }
 
-.row_card {
-  display: flex;
-}
+
 @media (max-width: 768px) {
     .element-text1 {
         font-size: 2.5rem; 
@@ -336,8 +351,10 @@ export default {
       
         padding: 0 !important;
         margin: 0;
-         //padding-right: 15px; 
+        padding-right: 15px; 
          font-size: 1rem
+
+         
          
     }
     .element-text4{
@@ -368,6 +385,11 @@ export default {
         //margin-left: 40px;
         justify-content: center;
         margin-left: 43px;
+    }
+
+    a {
+      margin-right: 10px;
+
     }
     
 }
