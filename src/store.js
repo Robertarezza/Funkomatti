@@ -125,13 +125,15 @@ export const store = reactive({
         {
             id: 1,
             img: "/assets/img/onepice.png",
-            description: "Quadretti, innovativa e accattivante",
+            description: "Quadretti",
+            description1: "Il tuo personaggio preferito o il tuo film in un quadretto 3d",
             backgroundColor:  '#C1E1FF'
         },
         {
             id: 2,
             img: "/assets/img/marvel1.png",
-            description: "Quadretti, innovativa e accattivante",
+            description: "Quadretti",
+            description1: "Il tuo personaggio preferito o il tuo film in un quadretto 3d",
             backgroundColor:  '#C1E1FF'
         },
         
