@@ -22,7 +22,7 @@ export default {
     window.addEventListener('load', () => {
       setTimeout(() => {
         this.loading = false; // Nasconde la pagina di caricamento dopo 1 secondo
-      }, 1000); // Simula il caricamento di risorse con un timeout di 1 secondo
+      }, 3000); // Simula il caricamento di risorse con un timeout di 1 secondo
     });
   },
 };
