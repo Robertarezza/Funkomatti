@@ -15,26 +15,31 @@ export default {
     return {
       store,
       loading: true, // Stato di caricamento iniziale
+      isVisible: true, // Stato di visibilità della loading page
     };
   },
   mounted() {
-    // Aggiungi un listener per verificare quando la finestra è completamente caricata
+    // Simula un tempo di caricamento
     window.addEventListener('load', () => {
       setTimeout(() => {
-        this.loading = false; // Nasconde la pagina di caricamento dopo 1 secondo
-      }, 3000); // Simula il caricamento di risorse con un timeout di 1 secondo
+        this.loading = false; // Nasconde il contenuto della loading page
+        setTimeout(() => {
+          this.isVisible = false; // Dopo la transizione, rimuovi la loading page dal DOM
+        }, 1000); // 1 secondo di transizione
+      }, 2000); // Simula un caricamento di 2 secondi
     });
   },
 };
 </script>
 
+
 <template>
   <div>
-    <!-- Mostra la pagina di caricamento se loading è true -->
-    <Loadingpage v-if="loading" />
-    
-    <!-- Se il caricamento è completo, mostra il contenuto dell'app -->
-    <div v-else class="background-container">
+    <!-- Passa isVisible come prop al componente LoadingPage -->
+    <Loadingpage :isVisible="isVisible" />
+
+    <!-- Mostra il contenuto dell'app dopo che il caricamento è completato -->
+    <div v-if="!loading" class="background-container">
       <AppHeader />
       <main>
         <router-view></router-view>

@@ -1,20 +1,28 @@
 
 <script>
 export default {
-  name: "LoadingPage",
+  name: "Loadingpage",
+  props: {
+    isVisible: {
+      type: Boolean,
+      required: true,
+    },
+  },
 };
 </script>
 
 
-
 <template>
-    <div class="loading-page">
+  <transition name="fade">
+    <!-- Usa v-if per controllare la visibilità della pagina di caricamento -->
+    <div v-if="isVisible" class="loading-page">
       <img src="../assets/img/logo2.png" alt="Logo" class="loading-logo" />
     </div>
-  </template>
+  </transition>
+</template>
 
 
-  <style scoped>
+<style scoped>
 .loading-page {
   position: fixed;
   top: 0;
@@ -24,12 +32,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff; /* Puoi anche rendere trasparente il background */
   z-index: 9999;
+  background-color: white; /* Aggiungi un background bianco per nascondere il contenuto sotto */
+  transition: opacity 1s ease; /* Aggiungi una transizione alla proprietà opacity */
+  opacity: 1;
 }
 
 .loading-logo {
-  width: 200px;
+  width: 300px;
   height: 100px;
   opacity: 0.7;
   animation: pulse 2s infinite ease-in-out;
@@ -48,5 +58,14 @@ export default {
     transform: scale(1);
     opacity: 0.7;
   }
+}
+
+/* Aggiungi la transizione per la dissolvenza */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>

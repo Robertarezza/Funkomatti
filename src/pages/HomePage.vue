@@ -113,6 +113,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
 .activeLink {
   color: #f15048; /* Colore del link attivo */
   text-decoration: underline; /* Sottolinea il link attivo */
@@ -292,20 +293,28 @@ export default {
 .element-text1 {
   -webkit-animation: bounce-in-right 1.5s both;
   animation: bounce-in-right 1.1s both; /* Per Safari e versioni più vecchie di Chrome */
+  -webkit-animation-delay: 1.5s; /* Ritardo di 2 secondi */
+  animation-delay: 1.5s; /* Ritardo di 2 secondi */
 }
 
 .element-text2 {
   -webkit-animation: bounce-in-right 1.5s both;
   animation: bounce-in-right 1.3s both; /* Per Safari e versioni più vecchie di Chrome */
+  -webkit-animation-delay: 1.5s; /* Ritardo di 2 secondi */
+  animation-delay: 1.5s; /* Ritardo di 2 secondi */
 }
 
 .element-text3 {
   -webkit-animation: bounce-in-right 1.5s both;
   animation: bounce-in-right 1.4s both; /* Per Safari e versioni più vecchie di Chrome */
+  -webkit-animation-delay: 1.5s; /* Ritardo di 2 secondi */
+  animation-delay: 1.5s; /* Ritardo di 2 secondi */
 }
 .element-text4 {
   -webkit-animation: bounce-in-right 1.5s both;
   animation: bounce-in-right 1.5s both; /* Per Safari e versioni più vecchie di Chrome */
+  -webkit-animation-delay: 1.5s; /* Ritardo di 2 secondi */
+  animation-delay: 1.5s; /* Ritardo di 2 secondi */
 }
 
 //carosello
