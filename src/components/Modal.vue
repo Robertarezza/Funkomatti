@@ -63,7 +63,7 @@ export default {
             >
               <div class="content">
                 <h2 class="title">{{ image.description }}</h2>
-                <p class="title">{{image.description1}}</p>
+                <p class="text">{{image.description1}}</p>
               </div>
             </div>
           </div>
@@ -258,6 +258,14 @@ export default {
   height: 75%;
   object-fit: contain;
   transition: transform 0.3s ease, filter 0.3s ease; /* Aggiunto filtro per la transizione */
+}
+.text {
+  font-size: 0.8rem;
+  word-wrap: break-word; /* Per andare a capo */
+  max-width: 300px; /* Imposta una larghezza massima */
+  white-space: normal; /* Gestione automatica dei ritorni a capo */
+  color: #f15048;
+  font-family: Comic Sans MS;
 }
     
   }
