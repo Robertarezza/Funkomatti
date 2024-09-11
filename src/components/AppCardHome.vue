@@ -32,12 +32,12 @@ export default {
         
       }
       else if (item.title === "FUNKO POP") {
-        // Carica le immagini delle Creazioni 3D
+        // Carica le immagini delle FUNKO POP
         this.currentImages = this.store.FunkoPop; 
         
       }
       else if (item.title === "Stampe realistiche") {
-        // Carica le immagini delle Creazioni 3D
+        // Carica le immagini delle STAMPE REALISTICHE
         this.currentImages = this.store.Stampe; 
         
       }
