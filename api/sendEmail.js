@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     // Configura Nodemailer
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // Può essere Gmail o un altro provider SMTP
+      service: 'hotmail', // Può essere Gmail o un altro provider SMTP
       auth: {
         user: process.env.EMAIL_USER, // Usa variabili d'ambiente
         pass: process.env.EMAIL_PASS,
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: email, // Mittente (inserito nel form)
-      to: 'tuo-indirizzo-email@example.com', // Il tuo indirizzo email
+      to: 'roey_r88@hotmail.it', // Il tuo indirizzo email
       subject: `Nuovo messaggio da ${name}`,
       text: message,
     };
