@@ -1,0 +1,16 @@
+{
+    "builds": [
+      {
+        "src": "api/sendEmail.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "src/**/*.vue",
+        "use": "@vercel/static-build"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "/api/$1" }
+    ]
+  }
+  

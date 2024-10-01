@@ -4,46 +4,41 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      nome: "",
-      email: "",
-      msg: "",
-      showModal: false, // Stato per gestire la visibilità del modale
+      formData: {
+        nome: "",
+        email: "",
+        msg: "",
+      },
       loading: false, // Stato di caricamento
     };
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       this.loading = true; // Imposta lo stato di caricamento a true
 
       const formData = {
-        name: this.nome,
-        email: this.email,
-        message: this.msg,
+        name: this.formData.nome,
+        email: this.formData.email,
+        message: this.formData.msg,
       };
 
-      // Invia i dati del form
-      axios.post('https://formsubmit.co/ajax/46dccfabc58b39bc1d25eabe5ae19508', formData, {
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        this.loading = false; // Imposta lo stato di caricamento a false
-        console.log('Response data:', response.data);
+      try {
+        // Effettua la richiesta POST alla tua API serverless su Vercel
+        const response = await axios.post('/api/sendEmail', formData);
         if (response.data.success) {
-          this.showModal = true; // Mostra il modale
-          this.nome = ""; // Pulisce il campo nome
-          this.email = ""; // Pulisce il campo email
-          this.msg = ""; // Pulisce il campo messaggio
+          alert('Form inviato con successo!');
+          this.formData.nome = "";
+          this.formData.email = "";
+          this.formData.msg = "";
         } else {
           console.error('Errore durante l\'invio del form', response.data);
         }
-      })
-      .catch(error => {
+      } catch (error) {
+        console.error('Errore durante l\'invio del form:', error);
+        alert('Si è verificato un errore, riprova.');
+      } finally {
         this.loading = false; // Imposta lo stato di caricamento a false
-        console.error('Errore:', error);
-      });
+      }
     },
   },
 };
@@ -53,7 +48,7 @@ export default {
   <div class="row mt-5 row_form">
     <div class="col-md-6">
       <form
-        @submit.prevent="handleSubmit"
+        @submit.prevent="submitForm"
         style="
           justify-content: center;
           align-items: center;
@@ -62,7 +57,7 @@ export default {
         "
       >
         <div class="form-control mt-3">
-          <input v-model="nome" type="text" id="name" name="name" required />
+          <input v-model="formData.name" type="text" id="name" name="name" required />
           <label for="name">
             <span style="transition-delay: 0ms; margin-left: 10px">N</span>
             <span style="transition-delay: 50ms">o</span>
@@ -71,7 +66,7 @@ export default {
           </label>
         </div>
         <div class="form-control mt-3">
-          <input v-model="email" type="email" id="email" name="email" required />
+          <input v-model="formData.email" type="email" id="email" name="email" required />
           <label for="email">
             <span style="transition-delay: 0ms; margin-left: 10px">E</span>
             <span style="transition-delay: 50ms">m</span>
@@ -82,7 +77,7 @@ export default {
         </div>
         <div class="form-control mt-3">
           <textarea
-            v-model="msg"
+            v-model="formData.message"
             id="message"
             name="message"
             rows="4"

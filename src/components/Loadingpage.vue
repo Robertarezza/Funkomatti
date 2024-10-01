@@ -33,7 +33,8 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  background-color: white; /* Aggiungi un background bianco per nascondere il contenuto sotto */
+  background-color:white; /* Aggiungi un background bianco per nascondere il contenuto sotto */
+
   transition: opacity 1s ease; /* Aggiungi una transizione alla proprietà opacity */
   opacity: 1;
 }
