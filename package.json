@@ -11,7 +11,12 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "axios": "^1.7.5",
+    "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mailslurp-client": "^15.20.2",
     "nodemailer": "^6.9.15",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"

@@ -1,43 +1,47 @@
 <script>
 import axios from 'axios';
 
+
+
 export default {
   data() {
     return {
+
       formData: {
-        nome: "",
+        name: "",
         email: "",
-        msg: "",
+        message: "",
       },
-      loading: false, // Stato di caricamento
+      showModal: false, // Modal di conferma
+      loading: false,   // Stato di caricamento
+      success: false,   // Stato di successo
+      errorMessage: "", // Messaggio di errore
     };
   },
   methods: {
     async handleSubmit() {
-      this.loading = true; // Imposta lo stato di caricamento a true
-
-      const formData = {
-        name: this.formData.nome,
-        email: this.formData.email,
-        message: this.formData.msg,
-      };
+      // Imposta lo stato di caricamento
+      this.loading = true;
+      this.errorMessage = "";
 
       try {
-        // Effettua la richiesta POST alla tua API serverless su Vercel
-        const response = await axios.post('/api/sendEmail', formData);
-        if (response.data.success) {
-          alert('Form inviato con successo!');
-          this.formData.nome = "";
-          this.formData.email = "";
-          this.formData.msg = "";
+        // Invia una richiesta POST al tuo server o endpoint MailSlurp
+        const response = await axios.post('server/invia-messaggio', this.formData);
+
+        // Gestisci la risposta in caso di successo
+        if (response.status === 200) {
+          this.success = true;
+          this.formData = { name: "", email: "", message: "" }; // Resetta il form
+          this.showModal = true; // Mostra il messaggio di conferma
         } else {
-          console.error('Errore durante l\'invio del form', response.data);
+          throw new Error("Qualcosa è andato storto");
         }
       } catch (error) {
-        console.error('Errore durante l\'invio del form:', error);
-        alert('Si è verificato un errore, riprova.');
+        console.error("Dettagli errore:", error); // Aggiungi questo per il debug
+        this.errorMessage = "Errore nell'invio del messaggio. Riprova.";
       } finally {
-        this.loading = false; // Imposta lo stato di caricamento a false
+        // Resetta lo stato di caricamento
+        this.loading = false;
       }
     },
   },
@@ -48,7 +52,7 @@ export default {
   <div class="row mt-5 row_form">
     <div class="col-md-6">
       <form
-        @submit.prevent="submitForm"
+        @submit.prevent="handleSubmit"
         style="
           justify-content: center;
           align-items: center;
