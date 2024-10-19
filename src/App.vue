@@ -1,6 +1,6 @@
 <script>
 import { store } from './store';
-import { server } from './server';
+//import { server } from '../server';
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import Loadingpage from './components/Loadingpage.vue'; // Importa la pagina di caricamento
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      server,
+      //server,
       store,
       loading: true, // Stato di caricamento iniziale
       isVisible: true, // Stato di visibilità della loading page

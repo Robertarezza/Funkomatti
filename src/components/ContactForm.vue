@@ -1,17 +1,15 @@
 <script>
 import axios from 'axios';
-
-
+import emailjs from '@emailjs/browser';
 
 export default {
   data() {
     return {
-
-      formData: {
-        name: "",
-        email: "",
-        message: "",
-      },
+       formData: {
+         user_name: "",
+         user_email: "",
+         message: "",
+       },
       showModal: false, // Modal di conferma
       loading: false,   // Stato di caricamento
       success: false,   // Stato di successo
@@ -19,19 +17,22 @@ export default {
     };
   },
   methods: {
-    async handleSubmit() {
+    async sendEmail() {
       // Imposta lo stato di caricamento
       this.loading = true;
       this.errorMessage = "";
 
       try {
-        // Invia una richiesta POST al tuo server o endpoint MailSlurp
-        const response = await axios.post('server/invia-messaggio', this.formData);
+        // Invia l'email usando EmailJS
+        const response = await emailjs.sendForm('service_ljmka0b', 'template_5788lza', this.$refs.form, {
+          publicKey: 'BzrORuISFMNz3oBpi',
+        });
 
         // Gestisci la risposta in caso di successo
         if (response.status === 200) {
           this.success = true;
-          this.formData = { name: "", email: "", message: "" }; // Resetta il form
+          // Resetta il form se necessario
+          this.formData = { user_name: "", user_email: "", message: "" };
           this.showModal = true; // Mostra il messaggio di conferma
         } else {
           throw new Error("Qualcosa è andato storto");
@@ -52,7 +53,8 @@ export default {
   <div class="row mt-5 row_form">
     <div class="col-md-6">
       <form
-        @submit.prevent="handleSubmit"
+        ref="form"
+        @submit.prevent="sendEmail"
         style="
           justify-content: center;
           align-items: center;
@@ -61,7 +63,13 @@ export default {
         "
       >
         <div class="form-control mt-3">
-          <input v-model="formData.name" type="text" id="name" name="name" required />
+          <input
+            v-model="formData.name"
+            type="text"
+            id="name"
+            name="user_name"
+            required
+          />
           <label for="name">
             <span style="transition-delay: 0ms; margin-left: 10px">N</span>
             <span style="transition-delay: 50ms">o</span>
@@ -70,7 +78,13 @@ export default {
           </label>
         </div>
         <div class="form-control mt-3">
-          <input v-model="formData.email" type="email" id="email" name="email" required />
+          <input
+            v-model="formData.email"
+            type="email"
+            id="email"
+            name="user_email"
+            required
+          />
           <label for="email">
             <span style="transition-delay: 0ms; margin-left: 10px">E</span>
             <span style="transition-delay: 50ms">m</span>
@@ -101,8 +115,7 @@ export default {
           </label>
         </div>
 
-        <button class="Btn" type="submit" :disabled="loading">
-
+        <button class="Btn" type="submit" :disabled="loading" value="Send">
           <span v-if="loading" class="loading-spinner"></span>
           <svg v-else class="Layer" viewBox="0 0 1095.66 1095.63">
             <path
@@ -136,7 +149,7 @@ export default {
               transform="translate(-202.29 -201.89)"
             ></path>
           </svg>
-          <p  class="text">Invia</p>
+          <p class="text">Invia</p>
         </button>
       </form>
       <!-- Modale di Successo -->
@@ -150,11 +163,17 @@ export default {
     <!-- Colonna per il testo descrittivo -->
     <div class="col-md-6">
       <h6
-        style="max-width: min-content; font-size: 3rem; color: #f15048; margin-top: 20px; font-family: Comic Sans MS;"
+        style="
+          max-width: min-content;
+          font-size: 3rem;
+          color: #f15048;
+          margin-top: 20px;
+          font-family: Comic Sans MS;
+        "
       >
         Contattaci
       </h6>
-      <p style="color: white; font-size: 0.9rem; font-family: Comic Sans MS;" class=" ">
+      <p style="color: white; font-size: 0.9rem; font-family: Comic Sans MS" class=" ">
         Utilizza il nostro modulo di contatto per tutte le richieste di informazioni o
         contattaci direttamente utilizzando le informazioni di contatto sottostanti. Non
         esitare a contattarci.
@@ -207,7 +226,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 /* Stile per l'indicatore di caricamento */
 .loading-spinner {
   border: 4px solid #f3f3f3; /* Colore di sfondo */
@@ -220,8 +238,12 @@ export default {
 
 /* Animazione per l'indicatore di caricamento */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 //modale
@@ -652,8 +674,6 @@ export default {
     background: #e4405f;
     color: #fff;
   }
-
-  
 }
 
 @media (max-width: 425px) {

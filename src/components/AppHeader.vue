@@ -57,7 +57,7 @@ export default {
     <section class="header-menu">
         <!-- LOGO -->
         <div class="img-container">
-            <img src="../assets/img/logo2.png" alt="business logo">
+            <img src="../assets/img/logo-5.png" alt="business logo">
         </div>
         
         <!-- HAMBURGER ICON -->
@@ -120,8 +120,8 @@ export default {
     }
 
     img {
-        max-width: 40%;
-        filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+        max-width: 11%;
+       // filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
     }
 
     .hamburger-menu {

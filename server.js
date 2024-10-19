@@ -36,6 +36,6 @@ app.post('/invia-messaggio', async (req, res) => {
 });
 
 // Avvia il server
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Server in ascolto sulla porta 5173');
 });

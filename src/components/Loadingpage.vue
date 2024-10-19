@@ -16,7 +16,7 @@ export default {
   <transition name="fade">
     <!-- Usa v-if per controllare la visibilità della pagina di caricamento -->
     <div v-if="isVisible" class="loading-page">
-      <img src="../assets/img/logo2.png" alt="Logo" class="loading-logo" />
+      <img src="../assets/img/logo-5.png" alt="Logo" class="loading-logo" />
     </div>
   </transition>
 </template>
@@ -33,17 +33,18 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  background-color:white; /* Aggiungi un background bianco per nascondere il contenuto sotto */
-
+ /* background-color:white;  Aggiungi un background bianco per nascondere il contenuto sotto */
+  background-image: url('../src/assets/img/sfondo53.jpg');
   transition: opacity 1s ease; /* Aggiungi una transizione alla proprietà opacity */
   opacity: 1;
 }
 
 .loading-logo {
-  width: 300px;
-  height: 100px;
+width: 40%;
+ 
   opacity: 0.7;
   animation: pulse 2s infinite ease-in-out;
+ 
 }
 
 @keyframes pulse {
