@@ -120,7 +120,7 @@ export default {
     }
 
     img {
-        max-width: 11%;
+        width: 11%;
        // filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
     }
 
@@ -133,7 +133,7 @@ export default {
         .bar1, .bar2, .bar3 {
             width: 25px;
             height: 3px;
-            background-color: #333;
+            background-color: white;
             margin: 5px 0;
             transition: 0.4s;
         }
@@ -218,6 +218,9 @@ export default {
 
         .img-container {
             width: 50%;
+        }
+        img {
+          width: 30%;
         }
         .element-text2 {
        // border-right: 4px solid white; 

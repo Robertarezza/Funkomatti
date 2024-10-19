@@ -33,8 +33,8 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 9999;
- /* background-color:white;  Aggiungi un background bianco per nascondere il contenuto sotto */
-  background-image: url('../src/assets/img/sfondo53.jpg');
+  background-color:#034555;   /* Aggiungi un background bianco per nascondere il contenuto sotto */
+ /* background-image: url('../src/assets/img/loading.jpg');*/
   transition: opacity 1s ease; /* Aggiungi una transizione alla proprietà opacity */
   opacity: 1;
 }
